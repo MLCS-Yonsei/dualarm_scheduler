@@ -1,0 +1,10 @@
+<launch>
+
+  <arg name="loop_rate" default="20"/>  <!-- control frequency (Hz) -->
+
+  <node pkg="dualarm_scheduler" type="dualarm_scheduler_node.py" name="dualarm_scheduler"  output="screen">
+    <param name="loop_rate" value="$(arg loop_rate)"/>
+    <rosparam command="load" file="$(find dualarm_scheduler)/params/dualarm_scheduler_params.yaml" />
+  </node>
+
+</launch>
