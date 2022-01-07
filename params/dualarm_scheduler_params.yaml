@@ -5,8 +5,12 @@ nodes: [
 ]
 
 tasks: [
-  ['node1', '/test', 'std_msgs/Int8', 3],
+  [
+    'node1',
+    'rostopic pub /test1 std_msgs/Int8 "data: 3" -1',
+    'rostopic pub /test2 geometry_msgs/PoseStamped "{header: {seq: 0, stamp: {secs: 0, nsecs: 0}, frame_id: }, pose: {position: {x: 0.0, y: 0.0, z: 0.0}, orientation: {x: 0.0, y: 0.0, z: 0.0, w: 0.0}}}" -1'
+  ],
   ['node2'],
   ['node3'],
-  ['node1', '/test', 'std_msgs/Int8', 5]
+  ['node1', 'rostopic pub /test1 std_msgs/Int8 "data: 5" -1'],
 ]

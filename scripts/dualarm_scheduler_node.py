@@ -1,11 +1,9 @@
 #!/usr/bin/env python
 
-import csv
 import rospy
 from std_msgs.msg import Bool
-from geometry_msgs.msg import Twist
-from geometry_msgs.msg import PoseStamped
 import time
+from subprocess import call
 
 
 
@@ -43,7 +41,6 @@ class SchedulerNode:
         for node in rospy.get_param("/dualarm_scheduler/nodes"):
             self.nodes[node] = NodeContainer(node)
         self.tasks = rospy.get_param("/dualarm_scheduler/tasks")
-        print(self.tasks)
         self.isInitialized = True
 
 
@@ -58,19 +55,12 @@ class SchedulerNode:
             if not task_lock:
                 if len(self.tasks) > 0:
                     args = self.tasks.pop(0)
-                    print(args)
+                    print("current task:", args)
                     self.nodes[args[0]].flag = True
                     self.nodes[args[0]].pub.publish(True)
                     if len(args) > 1:
-                        exec 'from ' + args[2].split('/')[0] + '.msg import ' + args[2].split('/')[-1]
-                        task_pub = rospy.Publisher(
-                            args[1],
-                            eval(args[2].split('/')[-1]),
-                            queue_size=10
-                        )
-                        time.sleep(1)
-                        task_pub.publish(args[3])
-                        del task_pub
+                        for arg in args[1:]:
+                            call([arg], shell=True)
                 else:
                     break
             rate.sleep()

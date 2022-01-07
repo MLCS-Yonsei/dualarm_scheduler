@@ -3,10 +3,9 @@ project(dualarm_scheduler)
 
 ## Find catkin macros and libraries
 find_package(catkin REQUIRED COMPONENTS
+  roscpp
   rospy
   std_msgs
-  geometry_msgs
-  dynamic_reconfigure
 )
 
 catkin_python_setup()
