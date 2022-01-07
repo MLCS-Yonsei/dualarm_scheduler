@@ -21,7 +21,6 @@ class NodeContainer:
         )
         def flagCallback(msg):
             self.flag = msg.data
-            print(node, self.flag)
         self.sub = rospy.Subscriber(
             node + "/task_flag",
             Bool,
