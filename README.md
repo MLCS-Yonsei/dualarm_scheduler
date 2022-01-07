@@ -14,5 +14,5 @@ tasks: [
 
 ## Subscribed & Published Topics
 ```
-name_of_the node/task_flag (std_msgs/Bool)
+name_of_the_node/task_flag (std_msgs/Bool)
 ```
