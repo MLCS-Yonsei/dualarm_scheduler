@@ -15,7 +15,7 @@ class NodeContainer:
         self.flag = False
         self.sub = None
         self.pub = rospy.Publisher(
-            "/" + node,
+            node + "/task_flag",
             Bool,
             queue_size=10
         )
@@ -23,7 +23,7 @@ class NodeContainer:
             self.flag = msg.data
             print(node, self.flag)
         self.sub = rospy.Subscriber(
-            "/" + node,
+            node + "/task_flag",
             Bool,
             flagCallback
         )
