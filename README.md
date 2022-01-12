@@ -14,6 +14,7 @@ tasks: [
 
 ## Subscribed & Published Topics
 ```
+<<<<<<< HEAD
 name_of_the node/task_flag (std_msgs/Int8)
 ```
 - Message Definition:
@@ -23,4 +24,7 @@ name_of_the node/task_flag (std_msgs/Int8)
 # ACTIVE=1
 # SUCCESS=2
 int8 data
+=======
+name_of_the_node/task_flag (std_msgs/Bool)
+>>>>>>> 6594a06df1e3b7627a5129c36a5784f4f99b282f
 ```
