@@ -17,7 +17,7 @@ class NodeContainer:
     def __init__(self, node):
         self.flag = INACTIVE
         self.pub = rospy.Publisher(
-            node + "/task_flag/from",
+            node + "/task_flag",
             Int8,
             queue_size=10
         )
@@ -25,7 +25,7 @@ class NodeContainer:
             self.flag = msg.data
             rospy.set_param(node + "/task_flag", msg.data)
         self.sub = rospy.Subscriber(
-            node + "/task_flag/to",
+            node + "/task_flag",
             Int8,
             flagCallback
         )
